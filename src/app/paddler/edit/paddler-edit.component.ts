@@ -21,12 +21,12 @@ export class PaddlerEditComponent {
 
         this.route.params.pluck('paddlerId').subscribe((id: number|string) => {
             if (id === 'new') {
-                this.paddler = new Paddler();
+                this.paddlerService.create().subscribe(paddler => {
+                    this.paddler = paddler;
+                });
             } else {
                 this.paddlerService.get(+id).subscribe(paddler => {
-                    if (paddler) {
-                        this.paddler = paddler;
-                    }
+                    this.paddler = paddler;
                 });
             }
         });

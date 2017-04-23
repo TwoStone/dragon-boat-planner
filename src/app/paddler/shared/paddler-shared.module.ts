@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 
 export * from './paddler';
 export * from './paddler.service';
+export * from './paddler-sides.pipe';
 
 @NgModule({
     imports: [],

@@ -7,8 +7,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { PaddlerModule } from './paddler/paddler.module';
-import { PaddlerListModule } from './paddler/list/paddler-list.module';
+import { PaddlerModule } from './paddler';
 import { AppComponent } from './app.component';
 
 const APP_ROUTES: Routes = [

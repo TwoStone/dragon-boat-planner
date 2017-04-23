@@ -9,6 +9,13 @@ export class PaddlerService {
     constructor(private storage: StorageService) {
     }
 
+    public create(): Observable<Paddler> {
+        let id = this.storage.get<number>('paddler_id');
+        const paddler = new Paddler(id++);
+        this.storage.set('paddler_id', id);
+        return Observable.from([paddler]);
+    }
+
     public getAll(): Observable<Paddler[]> {
         return Observable.from([Array.from(this.load().values())]);
     }

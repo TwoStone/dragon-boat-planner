@@ -9,7 +9,6 @@ export enum Gender {
 }
 
 export class Paddler {
-    private static ID_COUNTER = 0;
 
     public readonly id: number;
     public name: string;
@@ -17,8 +16,8 @@ export class Paddler {
     public sides: Side[];
     public gender: Gender;
 
-    constructor() {
-        this.id = Paddler.ID_COUNTER++;
+    constructor(id: number) {
+        this.id = id;
         this.sides = [];
     }
 }
