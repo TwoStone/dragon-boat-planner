@@ -40,7 +40,7 @@ export class PaddlerEditComponent {
         if (checked) {
             this.paddler.sides.push(side);
         } else {
-            this.paddler.sides.splice(this.paddler.sides.indexOf(side));
+            this.paddler.sides.splice(this.paddler.sides.indexOf(side), 1);
         }
     }
 
