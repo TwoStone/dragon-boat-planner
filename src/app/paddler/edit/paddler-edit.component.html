@@ -1,0 +1,38 @@
+<form *ngIf="paddler">
+  <div class="form-group">
+    <label for="paddler-name">Name</label>
+    <input type="text" class="form-control" name="name" id="paddler-name" aria-describedby="name-helpId" placeholder="" [(ngModel)]="paddler.name">
+    <small id="name-helpId" class="form-text text-muted">Name of the paddler</small>
+  </div>
+  <div class="form-group">
+    <label for="paddler-gender">Gender</label>
+    <select class="form-control" name="gender" id="paddler-gender" [ngModel]="paddler.gender" (ngModelChange)="setGender($event)">
+        <option value="0">Female</option>
+        <option value="1">Male</option>
+      </select>
+  </div>
+  <div class="form-group">
+    <label for="paddler-weight">Weight</label>
+    <div class="input-group">
+      <input type="number" class="form-control" name="weight" id="paddler-weight" aria-describedby="helpId" placeholder="" [(ngModel)]="paddler.weight">
+      <div class="input-group-addon">KG</div>
+    </div>
+    <small id="weight-helpId" class="form-text text-muted">Weight in Kilogramm</small>
+  </div>
+  <fieldset class="form-group">
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" name="side-right" id="paddler-side-right" [ngModel]="paddler.sides.includes(0)" (ngModelChange)="changeSide($event, 0)">
+        Right
+      </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" name="side-left" id="paddler-side-left" [ngModel]="paddler.sides.includes(1)" (ngModelChange)="changeSide($event, 1)">
+         Left
+      </label>
+    </div>
+  </fieldset>
+  <button type="button" class="btn btn-primary" (click)="save()">Submit</button>
+  <button type="button" class="btn btn-link" (click)="cancel()">Cancel</button>
+</form>

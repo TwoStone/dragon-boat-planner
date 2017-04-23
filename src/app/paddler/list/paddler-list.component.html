@@ -1,0 +1,24 @@
+<!--component html goes here -->
+<div class="card">
+    <div class="card-block">
+        <h4 class="card-title">Paddler</h4>
+        <p class="card-text">
+            Available paddler <span class="badge badge-pill badge-info">{{paddlers.length}}</span>
+            Female <span class="badge badge-pill badge-info">{{gender(paddlers, 0).length}}</span>
+            Male <span class="badge badge-pill badge-info">{{gender(paddlers, 1).length}}</span>
+        </p>
+        <button class="btn btn-primary" [routerLink]="['./new']">
+            Add
+        </button>
+    </div>
+    <div class="list-group list-group-flush">
+        <a class="list-group-item" *ngFor="let paddler of paddlers" [routerLink]="['./', paddler.id]">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="p-2">{{ paddler.name }}</h5>
+                <div class="p-2">{{paddler.weight}} kg</div>
+                <div class="p-2">{{ paddler.sides | sides }}</div>
+                <i class="fa p-2" [class.fa-mars]="paddler.gender == 1" [class.fa-venus]="paddler.gender == 0" aria-hidden="true"></i>
+            </div>
+        </a>
+    </div>
+</div>
