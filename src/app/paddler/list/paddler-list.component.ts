@@ -22,7 +22,4 @@ export class PaddlerListComponent implements OnInit {
     public gender(paddlers: Paddler[], gender: Gender) {
         return paddlers.filter(paddler => paddler.gender === gender);
     }
-
-    public addNewPaddler() {
-    }
 }
