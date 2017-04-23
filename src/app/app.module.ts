@@ -1,3 +1,5 @@
+import { StorageModule } from './storage/storage.module';
+import { StorageService } from './storage/storage.service';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,6 +24,7 @@ const APP_ROUTES: Routes = [
     AppComponent
   ],
   imports: [
+    StorageModule.local(),
     DashboardModule,
     PaddlerModule,
     BrowserModule,
