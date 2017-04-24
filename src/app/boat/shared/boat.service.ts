@@ -36,7 +36,7 @@ export class BoatService {
         if (!boats) {
             boats = [];
         }
-        return new Map(boats.map<[number, Boat]>(boat => [boat.id, boat]);
+        return new Map(boats.map<[number, Boat]>(boat => [boat.id, boat]));
     }
 
     private save(boats: Map<number, Boat>) {
