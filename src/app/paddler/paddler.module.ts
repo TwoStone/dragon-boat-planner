@@ -17,7 +17,7 @@ import { NgModule } from '@angular/core';
                 component: PaddlerListComponent
             },
             {
-                path: `paddler/:${PADDLER_ID_KEY}`,
+                path: 'paddler/:paddlerId',
                 component: PaddlerEditComponent
             }
         ])
