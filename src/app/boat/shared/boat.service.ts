@@ -1,3 +1,4 @@
+import { Bench } from './boat';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
@@ -32,7 +33,13 @@ export class BoatService {
     }
 
     private load(): Map<number, Boat> {
-        let boats = this.storage.get<Boat[]>('boat');
+        let boats = this.storage.get<Boat[]>('boat', result => {
+            return result.map((boat) => {
+                boat.benches = boat.benches.map(bench => new Bench(bench));
+                return new Boat(null, boat);
+            });
+        });
+
         if (!boats) {
             boats = [];
         }

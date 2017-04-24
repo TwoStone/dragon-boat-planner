@@ -3,6 +3,11 @@ import { Paddler } from '../../paddler';
 export class Bench {
     public left: Paddler;
     public right: Paddler;
+
+    constructor(template?: Bench) {
+        this.left = template.left;
+        this.right = template.right;
+    }
 }
 
 export class Boat {
@@ -10,10 +15,14 @@ export class Boat {
     public name: string;
     public benches: Bench[];
 
-    constructor(id: number) {
-        this.id = id;
-        this.benches = [];
-        this.benches.length = 10;
-        this.benches.fill(new Bench());
+    constructor(id?: number, template?: Boat) {
+        if (template) {
+            this.id = template.id;
+            this.name = template.name;
+            this.benches = template.benches;
+        } else {
+            this.id = id;
+        }
     }
+
 }

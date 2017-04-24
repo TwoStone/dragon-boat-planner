@@ -11,7 +11,9 @@ export class PaddlerService {
 
     public create(): Observable<Paddler> {
         let id = this.storage.get<number>('paddler_id');
-        const paddler = new Paddler(id++);
+        const paddler = {
+            id: id++
+        } as Paddler;
         this.storage.set('paddler_id', id);
         return Observable.from([paddler]);
     }
@@ -40,7 +42,10 @@ export class PaddlerService {
     }
 
     private load(): Map<number, Paddler> {
-        let paddlers = this.storage.get<Paddler[]>('paddler');
+        let paddlers = this.storage.get<Paddler[]>('paddler', (result) => {
+            return result.map(paddler => new Paddler(null, paddler));
+        });
+
         if (!paddlers) {
             paddlers = [];
         }
