@@ -1,7 +1,10 @@
-import { StorageService } from '../../storage';
-import {Paddler} from './paddler';
-import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
+
+import { Reviver } from '../../utils/reviver';
+import { StorageService } from '../../storage';
+
+import { Paddler, PaddlerReviver } from './paddler';
 
 @Injectable()
 export class PaddlerService {
@@ -43,7 +46,7 @@ export class PaddlerService {
 
     private load(): Map<number, Paddler> {
         let paddlers = this.storage.get<Paddler[]>('paddler', (result) => {
-            return result.map(paddler => new Paddler(null, paddler));
+            return Reviver.reviveArray(Paddler, result, PaddlerReviver);
         });
 
         if (!paddlers) {
