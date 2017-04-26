@@ -12,6 +12,14 @@ export class BoatService {
 
     constructor(private storage: StorageService) { }
 
+    public create(): Observable<Boat> {
+        let id = this.storage.get<number>('boat_id') || 0;
+        const boat = new Boat(id++, 10);
+        this.storage.set('boat_id', id);
+
+        return Observable.from([boat]);
+    }
+
     public getAll(): Observable<Boat[]> {
         return Observable.from([Array.from(this.load().values())]);
     }

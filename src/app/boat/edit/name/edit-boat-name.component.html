@@ -1,0 +1,29 @@
+<!--component html goes here -->
+<div class="modal fade show" bsModal #modal="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Boat name</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div class="form-group">
+              <label for="boat-name">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="boat-name"
+                id="boat-name"
+                aria-describedby="boat-name-helpId"
+                placeholder="name"
+                [ngModel]="name"
+                (ngModelChange)="nameChange.emit($event)">
+              <small id="boat-name-helpId" class="form-text text-muted">Name of the boat</small>
+            </div>
+            <button type="button" (click)="modal.hide()" class="btn btn-primary">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

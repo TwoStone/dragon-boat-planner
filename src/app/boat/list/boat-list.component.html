@@ -1,1 +1,15 @@
 <!--component html goes here -->
+<div class="card">
+    <div class="card-block">
+        <h4 class="card-title">Boats</h4>
+        <button class="btn btn-primary" [routerLink]="['./new']">
+            Add
+        </button>
+    </div>
+    <div class="list-group list-group-flush">
+        <a class="list-group-item justify-content-between" *ngFor="let boat of boats" [routerLink]="['./', boat.id]">
+            <h5 class="p-2">{{ boat.name }}</h5>
+            <span class="badge badge-default badge-pill">{{ boat.paddlers.length }}</span>
+        </a>
+    </div>
+</div>

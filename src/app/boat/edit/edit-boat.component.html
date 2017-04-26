@@ -1,0 +1,47 @@
+<!--component html goes here -->
+<app-edit-boat-name #editName *ngIf="boat" [(name)]="boat.name" (onHide)="saveBoat()"></app-edit-boat-name>
+<div class="row">
+    <div class="col-4 align-self-start">
+    </div>
+    <div *ngIf="boat" class="card col-md-4 col-sm-12">
+        <img class="card-img-top" data-src="holder.js/100%x180/" alt="">
+        <div class="card-block">
+            <h4 class="card-title">{{boat.name}}</h4>
+            <p class="card-text"></p>
+        </div>
+        <ul class="list-group list-group-flush benches">
+            <li class="list-group-item bench" *ngFor="let bench of boat.benches; let i = index">
+                <div class="col-5 left">
+                    <div *ngIf="bench.left;else emptySeat">
+                    {{ bench.left }}
+                    </div>
+                </div>
+                <div class="col-2 number">
+                    {{ i + 1}}
+                </div>
+                <div class="col-5 right">
+                    <div *ngIf="bench.right;else emptySeat">
+                        {{ bench.right }}
+                    </div>
+                </div>
+                <ng-template #emptySeat>
+                    empty
+                </ng-template>
+            </li>
+            <li class="list-group-item summary">
+                <div class="col-4 left">
+                    {{ weight(boat.paddlersForSide(0)) }}
+                </div>
+                <div class="col-4 legend">
+                    weight
+                </div>
+                <div class="col-4 right">
+                    {{ weight(boat.paddlersForSide(1)) }}
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="col-4 align-self-end">
+    </div>
+
+</div>

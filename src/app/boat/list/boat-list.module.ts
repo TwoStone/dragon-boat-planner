@@ -1,3 +1,5 @@
+import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 // Angular Imports
 import { NgModule } from '@angular/core';
 
@@ -6,7 +8,8 @@ import { BoatListComponent } from './boat-list.component';
 
 @NgModule({
     imports: [
-
+        BrowserModule,
+        RouterModule
     ],
     declarations: [
         BoatListComponent,
