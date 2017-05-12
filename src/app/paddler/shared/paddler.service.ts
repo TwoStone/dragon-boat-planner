@@ -14,9 +14,7 @@ export class PaddlerService {
 
     public create(): Observable<Paddler> {
         let id = this.storage.get<number>('paddler_id');
-        const paddler = {
-            id: id++
-        } as Paddler;
+        const paddler = new Paddler(id++);
         this.storage.set('paddler_id', id);
         return Observable.from([paddler]);
     }

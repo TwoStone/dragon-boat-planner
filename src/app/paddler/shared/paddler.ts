@@ -17,6 +17,7 @@ export class Paddler  {
 
     constructor(id: number) {
         this.id = id;
+        this.sides = [];
     }
 }
 
